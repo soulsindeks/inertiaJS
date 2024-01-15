@@ -1,5 +1,5 @@
 <template>
-    <button class="w-max p-2 bg-slate-600">
+    <button type="type" class="w-max p-2 bg-slate-600">
             {{ label }}
     </button>
 </template>
@@ -9,6 +9,11 @@
         label: {
             type: String,
             default: "bajingan"
+        },
+
+        type: {
+            type: String,
+            default: "submit"
         }
     })
 </script>

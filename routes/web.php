@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -20,12 +21,5 @@ Route::get('/', function () {
     ]); 
 });
 
-Route::get('/todo', function () {
-    return Inertia::render('pages/todos/Index', [
-        'data' => [
-            ['id' => 1, 'title' => 'meimei1'],
-            ['id' => 2, 'title' => 'meimei2'],
-            ['id' => 3, 'title' => 'meimei3']
-        ]
-    ]); 
-});
+Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
+Route::post('/todo', [TodoController::class, 'store'])->name('todo.store');
