@@ -11,16 +11,23 @@
 </template>
 
 <script setup>
+import { useForm } from "@inertiajs/vue3"
 import Button from "../../components/Button/Index.vue";
 import { ref } from "vue";
 defineProps ({
     data: Array
 })
 
-let user =  ref({})
+let errors =  ref({})
+let user = useForm({
+    title: '',
+})
 const onSubmit = () => {
-    console.log(user.value.title);
-    console.log('submit');
+    user.submit("post", "/todo", {
+        onSuccess: () => user.reset("title"),
+        onError: (err) => (errors.value = err)
+    });
+
 }
 </script>
 

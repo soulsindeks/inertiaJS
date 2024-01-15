@@ -10,12 +10,9 @@ use Illuminate\Http\Request;
 class TodoController extends Controller
 {
     function index() {
+        $data = Todo::all();
         return Inertia::render('pages/todos/Index', [
-            'data' => [
-                ['id' => 1, 'title' => 'meimei1'],
-                ['id' => 2, 'title' => 'meimei2'],
-                ['id' => 3, 'title' => 'meimei3']
-            ]
+            'data' => $data
         ]);
     }
 
@@ -24,8 +21,8 @@ class TodoController extends Controller
             'title' => 'required',
         ]);
 
-        Todo::created($data);
-        return redirect();
+        Todo::create($data);
+        return redirect()->back();
     }
     
 }
