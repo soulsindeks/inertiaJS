@@ -21,5 +21,16 @@ Route::get('/', function () {
     ]); 
 });
 
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'data' => [
+            ['id' => 1, 'nama' => 'meimei1'],
+            ['id' => 2, 'nama' => 'meimei2'],
+            ['id' => 3, 'nama' => 'meimei3'],
+        ] 
+    ]); 
+});
+
+
 Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
 Route::post('/todo', [TodoController::class, 'store'])->name('todo.store');
